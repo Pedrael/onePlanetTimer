@@ -1,0 +1,207 @@
+body {
+  @include font('Roboto', 400);
+  background: $gray;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  z-index: 1;
+}
+
+h2, h3, h4, h5, a, p { color: $dd-blue; }
+
+h2 {
+  @include FontLineSize(0.35, 0.35, 0.3, 36, 7);
+  font-weight: 500;
+  color: $dd-blue;
+}
+h3 {
+  @include FontLineSize(0.2, 0.2, 0.6, 24, 7);
+  font-weight: 400;
+}
+h4 {
+  @include FontLineSize(0.2, 0.2, 0.6, 20, 7);
+  font-weight: 400;
+}
+h5 {
+  @include FontLineSize(0.18, 0.18, 0.64, 16, 7);
+  font-weight: 400;
+}
+p, a {
+  @include FontLineSize(0.15, 0.15, 0.7, 14, 7);
+  font-weight: 400;
+}
+
+.dd-blue {
+  color: $dd-blue;
+}
+
+.d-gray {
+  color: $d-gray;
+}
+
+.button-accent {
+  @include width(213, 0.5);
+  @include min-height(70, 0.5);
+  @include max-height(85, 0.5);
+  @include border-radius(51);
+  @include FontLineSize(0.22, 0.22, 0.56, 20, 10);
+
+  &:before {
+    top: RelativeUnits(-141, 0.5);
+    right: RelativeUnits(-150, 0.5);
+    @include width(263, 0.5);
+    @include height(167, 0.5);
+  }
+}
+
+.button-accent-small {
+  @include width(166, 0.3);
+  @include min-height(55, 0.3);
+  @include max-height(65, 0.3);
+  @include border-radius(51);
+  @include FontLineSize(0.15, 0.15, 0.7, 16, 7);
+
+  &:before {
+    top: RelativeUnits(-151, 0.3);
+    right: RelativeUnits(-170, 0.3);
+    @include width(283, 0.3);
+    @include height(177, 0.3);
+  }
+}
+
+.button-accent, .button-accent-small {
+  background: $blue;
+  color: #fff !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-weight: 500;
+
+  @include _tablet-small {
+    font-size: 14px;
+  }
+
+  &::before {
+    content: '';
+    background: #2845de;
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    transition: 0.5s;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    background: #1d41ff;
+    height: 1000%;
+    width: 220%;
+  }
+}
+
+.title {
+  max-width: 90vw;
+  .deco-capsule {
+    @include margin-padding(('m-b': (20, 0.5) ));
+    @include width(31, 0.2);
+    @include height(7, 0.2);
+    @include border-radius(7);
+    background: linear-gradient(90deg, #3083FF 0%, #8FC9FF 140.32%);
+  }
+
+  .framed {
+    color: $blue !important;
+    border: 1px solid #4360FB;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include min-width(51, 0.2);
+    @include height(49, 0.2);
+    @include margin-padding(('m-r': (18, 0.2) ));
+    border-radius: RelativeUnits(6, 0.2) RelativeUnits(22, 0.2) RelativeUnits(6, 0.2) RelativeUnits(22, 0.2);
+  }
+}
+
+.-on-scale:hover {
+  animation: 0.1s ease-out 0s infinite ping;
+}
+
+.video-container {
+  position: relative;
+
+  .video-itself {
+    @include width(845, 0.8);
+    padding-top: RelativeUnits(475, 0.8);
+    @include border-radius(29);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .video-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include width(500, 0.7);
+    @include height(65, 0.5);
+    position: absolute;
+    top: RelativeUnits(-35, 0.5);
+    left: -5px;
+    z-index: 2;
+    h3 {
+      color: #fff;
+      @include FontLineSize(0.35, 0.35, 0.3, 24, 7);
+    }
+
+      &:before {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: skewX(-25deg);
+        @include border-radius(7);
+        background: #545C94;
+        content: '';
+      }
+    }
+
+  iframe {
+    border: 0;
+    height: 101%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 101%;
+  }
+}
+
+.youtube-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.none {
+  display: none !important;
+}
+
+@keyframes ping { from { transform: translateX(-1px); } to { transform: translateX(1px); }  }
