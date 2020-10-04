@@ -1,0 +1,35 @@
+#content {
+  .rounded {
+    background: #fff;
+    @include border-radius(10);
+  }
+
+  .body-content {
+    display: grid;
+    @include width(1200, 0.7, desktop-small);
+    max-width: 90vw;
+
+  }
+
+  .title-div {
+    width: 100%;
+    @include height(150, 0.2, desktop-small);
+    @include margin-padding(('p-l': (50, 1), 'p-r': (50, 1) ));
+
+    .margin-bottom {
+      @include margin-padding(('m-b': (18, 0.2) ));
+    }
+
+    .with-clock:before {
+      content: '';
+      display: block;
+      background: url('../img/clock.svg');
+      background-repeat: no-repeat;
+      @include width(21, 0.2, desktop-small);
+      @include min-width(21, 0.2, desktop-small);
+      @include height(21, 0.2, desktop-small);
+      @include min-height(21, 0.2, desktop-small);
+      @include margin-padding(('m-r': (26, 0.2) ));
+    }
+  }
+}

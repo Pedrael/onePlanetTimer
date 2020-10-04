@@ -13,27 +13,26 @@ img {
   z-index: 1;
 }
 
-h2, h3, h4, h5, a, p { color: $dd-blue; }
+h2, h3, h4, h5, a, p { color: #000; }
 
 h2 {
-  @include FontLineSize(0.35, 0.35, 0.3, 36, 7);
-  font-weight: 500;
-  color: $dd-blue;
+  @include FontLineSize(0.4, 0.4, 0.2, 27, 7, normal, desktop-small);
+  font-weight: 400;
 }
 h3 {
-  @include FontLineSize(0.2, 0.2, 0.6, 24, 7);
+  @include FontLineSize(0.4, 0.4, 0.2, 26, 7, normal, desktop-small);
   font-weight: 400;
 }
 h4 {
-  @include FontLineSize(0.2, 0.2, 0.6, 20, 7);
+  @include FontLineSize(0.4, 0.4, 0.2, 25, 7, normal, desktop-small);
   font-weight: 400;
 }
 h5 {
-  @include FontLineSize(0.18, 0.18, 0.64, 16, 7);
+  @include FontLineSize(0.18, 0.18, 0.64, 16, 7, normal, desktop-small);
   font-weight: 400;
 }
 p, a {
-  @include FontLineSize(0.15, 0.15, 0.7, 14, 7);
+  @include FontLineSize(0.15, 0.15, 0.7, 14, 7, normal, desktop-small);
   font-weight: 400;
 }
 
@@ -46,66 +45,54 @@ p, a {
 }
 
 .button-accent {
-  @include width(213, 0.5);
-  @include min-height(70, 0.5);
-  @include max-height(85, 0.5);
+  @include min-width(213, 0.5, desktop-small);
+  @include min-height(58, 0.2, desktop-small);
+  @include max-height(70, 0.2, desktop-small);
   @include border-radius(51);
-  @include FontLineSize(0.22, 0.22, 0.56, 20, 10);
+  @include FontLineSize(0.15, 0.15, 0.7, 14, 7, normal, desktop-small);
 
   &:before {
-    top: RelativeUnits(-141, 0.5);
-    right: RelativeUnits(-150, 0.5);
-    @include width(263, 0.5);
-    @include height(167, 0.5);
+    top: RelativeUnits(-141, 0.5, desktop-small);
+    right: RelativeUnits(-150, 0.5, desktop-small);
+    @include width(263, 0.5, desktop-small);
+    @include height(167, 0.5, desktop-small);
   }
 }
 
-.button-accent-small {
-  @include width(166, 0.3);
-  @include min-height(55, 0.3);
-  @include max-height(65, 0.3);
-  @include border-radius(51);
-  @include FontLineSize(0.15, 0.15, 0.7, 16, 7);
-
-  &:before {
-    top: RelativeUnits(-151, 0.3);
-    right: RelativeUnits(-170, 0.3);
-    @include width(283, 0.3);
-    @include height(177, 0.3);
-  }
-}
-
-.button-accent, .button-accent-small {
+.button-accent {
   background: $blue;
-  color: #fff !important;
+  border: 2px solid $blue;
+  //box-shadow: 0 0 1px 0 $blue inset, 0 0 1px 0 $blue;
+  color: $blue !important;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   text-align: center;
   text-decoration: none;
-  color: inherit;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   font-weight: 500;
+  mask-image: radial-gradient(circle, white 100%, black 100%);
 
-  @include _tablet-small {
-    font-size: 14px;
+  &:hover {
+    color: #fff !important;
   }
 
   &::before {
     content: '';
-    background: #2845de;
+    background: $blue;
     position: absolute;
     display: block;
     border-radius: 50%;
     transition: 0.5s;
     z-index: -1;
+    mask-image: radial-gradient(circle, white 100%, black 100%);
   }
 
   &:hover::before {
-    background: #1d41ff;
+    background: $blue;
     height: 1000%;
     width: 220%;
   }
