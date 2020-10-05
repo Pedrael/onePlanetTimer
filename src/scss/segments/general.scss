@@ -16,15 +16,15 @@ img {
 h2, h3, h4, h5, a, p { color: #000; }
 
 h2 {
-  @include FontLineSize(0.4, 0.4, 0.2, 27, 7, normal, desktop-small);
+  @include FontLineSize(0.35, 0.35, 0.3, 27, 7, normal, desktop-small);
   font-weight: 400;
 }
 h3 {
-  @include FontLineSize(0.4, 0.4, 0.2, 26, 7, normal, desktop-small);
+  @include FontLineSize(0.35, 0.35, 0.3, 26, 7, normal, desktop-small);
   font-weight: 400;
 }
 h4 {
-  @include FontLineSize(0.4, 0.4, 0.2, 25, 7, normal, desktop-small);
+  @include FontLineSize(0.35, 0.35, 0.3, 25, 7, normal, desktop-small);
   font-weight: 400;
 }
 h5 {
@@ -46,12 +46,11 @@ p, a {
 
 .button-accent {
   @include min-width(213, 0.5, desktop-small);
-  @include min-height(58, 0.2, desktop-small);
-  @include max-height(70, 0.2, desktop-small);
-  @include border-radius(51);
+  @include min-height(58, 0.5, desktop-small);
+  @include max-height(80, 0.5, desktop-small);
   @include FontLineSize(0.15, 0.15, 0.7, 14, 7, normal, desktop-small);
 
-  &:before {
+  &:after {
     top: RelativeUnits(-141, 0.5, desktop-small);
     right: RelativeUnits(-150, 0.5, desktop-small);
     @include width(263, 0.5, desktop-small);
@@ -60,9 +59,8 @@ p, a {
 }
 
 .button-accent {
-  background: $blue;
-  border: 2px solid $blue;
-  //box-shadow: 0 0 1px 0 $blue inset, 0 0 1px 0 $blue;
+  background: #fff;
+  @include border-radius(51);
   color: $blue !important;
   display: flex;
   justify-content: center;
@@ -80,7 +78,7 @@ p, a {
     color: #fff !important;
   }
 
-  &::before {
+  &::after {
     content: '';
     background: $blue;
     position: absolute;
@@ -91,7 +89,20 @@ p, a {
     mask-image: radial-gradient(circle, white 100%, black 100%);
   }
 
-  &:hover::before {
+  &::before {
+    content: '';
+    background: #fff;
+    position: absolute;
+    display: block;
+    z-index: -1;
+    mask-image: radial-gradient(circle, white 100%, black 100%);
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    @include border-radius(51);
+    border: 2px solid $blue;
+  }
+
+  &:hover::after {
     background: $blue;
     height: 1000%;
     width: 220%;

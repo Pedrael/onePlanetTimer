@@ -1,23 +1,38 @@
 #content {
+
+  @include margin-padding(('p-t': (66, 0.5), 'p-b': (75, 0.5) ));
+
+  .hidden {
+    display: none;
+  }
+
   .rounded {
     background: #fff;
     @include border-radius(10);
+    flex-grow: 1;
+  }
+
+  .subgrid {
+    grid-gap: 20px;
+    @include width(793, 0.7, desktop-small);
+    max-width: 100%;
   }
 
   .body-content {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 20px;
     @include width(1200, 0.7, desktop-small);
     max-width: 90vw;
-
   }
 
-  .title-div {
+  .title-div { // TITLE
     width: 100%;
-    @include height(150, 0.2, desktop-small);
+    @include min-height(150, 0.2, desktop-small);
     @include margin-padding(('p-l': (50, 1), 'p-r': (50, 1) ));
 
     .margin-bottom {
-      @include margin-padding(('m-b': (18, 0.2) ));
+      @include margin-padding(('m-b': (18, 0.5) ));
     }
 
     .with-clock:before {
@@ -25,11 +40,119 @@
       display: block;
       background: url('../img/clock.svg');
       background-repeat: no-repeat;
+      background-size: contain;
       @include width(21, 0.2, desktop-small);
       @include min-width(21, 0.2, desktop-small);
       @include height(21, 0.2, desktop-small);
       @include min-height(21, 0.2, desktop-small);
       @include margin-padding(('m-r': (26, 0.2) ));
+    }
+
+    @include _tablet-semi-middle {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .button-accent {
+      @include min-width(337, 0.35, desktop-small);
+      @include width(337, 0.35, desktop-small);
+      max-width: 100%;
+
+      .ring {
+        fill: $blue;
+        min-width: 100%;
+      }
+
+      @include _tablet-semi-middle {
+        margin-top: 20px;
+      }
+    }
+
+    .button-accent:hover {
+      .ring {
+        fill: #fff;
+      }
+    }
+
+    .call-wrap {
+      @include min-width(30, 0.4, desktop-small);
+      @include width(30, 0.4, desktop-small);
+      @include height(30, 0.4, desktop-small);
+      @include margin-padding(('m-l': (16, 0.2) ));
+    }
+  }
+
+  .timer-div { // TIMER
+    @include width(793, 0.7, desktop-small);
+    @include min-height(446, 0.7, desktop-small);
+    @include height(446, 0.7, desktop-small);
+    max-width: 100%;
+    padding: 30px;
+
+    .img-wrap {
+      @include width(186, 0.7, desktop-small);
+    }
+
+    .title {
+      color: $blue;
+      font-weight: 500;
+      @include margin-padding(('m-b': (25, 0.5) ));
+    }
+
+    .text-wrap {
+      @include margin-padding(('m-l': (100, 0.8) ));
+    }
+  }
+
+  .package-div { // PACKAGES
+    @include width(377, 0.7, desktop-small);
+    @include min-height(241, 0.7, desktop-small);
+    @include margin-padding(('p-l': (40, 0.5), 'p-t': (40, 0.5), 'p-b': (40, 0.5) ));
+    background-repeat: no-repeat;
+    background-position: 90% center;
+
+    h4 {
+      font-weight: 500;
+    }
+
+    .button-accent {
+      @include max-width(147, 0.2, desktop-small);
+      @include min-width(147, 0.2, desktop-small);
+      @include margin-padding(('m-t': (40, 0.5) ));
+    }
+  }
+
+  .chat-div { // CHAT
+    @include min-height(620, 0.7, desktop-small);
+    h3 {
+      color: $blue;
+    }
+  }
+
+  #pkg1 {
+    background-image: url('../img/button-guy.png');
+    background-size: auto 80%;
+  }
+
+  #pkg2 {
+    background-image: url('../img/laptop-guy.png');
+    background-size: auto 80%;
+  }
+
+  @include _tablet-middle {
+    .body-content {
+      flex-direction: column;
+    }
+
+    .subgrid {
+      width: 100%;
+    }
+  }
+
+  @include _tablet-small {
+    .package-div {
+      width: 100%;
     }
   }
 }
